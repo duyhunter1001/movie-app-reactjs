@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Header = () => {
   return (
-    <header className="fixed z-[500] h-16 w-screen bg-black/50 text-white backdrop-blur-xl transition-all duration-300">
-      <div className="container mx-auto flex h-full flex-row items-center justify-between max-sm:px-4">
+    <header className="fixed z-[500] h-16 w-screen bg-black/50 text-white backdrop-blur-md transition-all duration-300">
+      <div className="max-w-screen-2xl mx-auto flex h-full flex-row items-center justify-between px-8">
         <div className="flex flex-1">
           <img
             className="mr-8 w-24 object-contain"
@@ -12,8 +12,8 @@ export const Header = () => {
             alt="logo"
           />
           <div className="hidden gap-8 sm:flex sm:items-center">
-            <a href="#">Phim</a>
-            <a href="#">Truyền hình</a>
+            <a href="#">Movie</a>
+            <a href="#">TV Show</a>
           </div>
         </div>
         <div>
