@@ -12,7 +12,7 @@ export const MovieCard = ({ poster, title, releaseDate, mediaType }) => {
       <div className='overflow-hidden'>
         <img
           className="rounded-lg scale-110 hover:scale-100 transition-all duration-300"
-          src={`https://image.tmdb.org/t/p/original/${poster}`}
+          src={`https://image.tmdb.org/t/p/w500/${poster}`}
         />
       </div>
       <div className="px-4 py-2">
