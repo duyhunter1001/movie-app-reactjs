@@ -4,8 +4,8 @@ import useSWR from "swr";
 import { fetchWithToken } from "../../helpers/fetcher";
 import { cn } from "../../helpers/utils";
 
-export const MediaList = ({ title, tabs }) => {
 
+export const MediaList = ({ title, tabs }) => {
 
   const [mediaList, setMediaList] = useState([]);
   const [activeTabName, setActiveTabName] = useState(tabs[0]?.type);
@@ -53,6 +53,7 @@ export const MediaList = ({ title, tabs }) => {
             title={media.title || media.original_name}
             releaseDate={media.release_date || media.first_air_date}
             mediaType={media.media_type || activeTabName}
+            id={media.id}
           />
         ))}
       </div>

@@ -1,17 +1,20 @@
+import { useNavigate } from "react-router-dom";
 
-export const MovieCard = ({ poster, title, releaseDate, mediaType }) => {
+export const MovieCard = ({ poster, title, releaseDate, mediaType, id }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="relative rounded-lg border border-slate-900 shadow-sm cursor-pointer">
+    <div className="relative cursor-pointer rounded-lg border border-slate-900 shadow-sm" onClick={() => navigate(`/movie/${id}`)}>
       {mediaType === "tv" ? (
-        <div className="absolute z-10 right-0 top-3 rounded-s bg-primary px-2 text-sm font-bold uppercase text-second shadow">
+        <div className="absolute right-0 top-3 z-10 rounded-s bg-primary px-2 text-sm font-bold uppercase text-second shadow">
           {mediaType}
         </div>
       ) : (
         ""
       )}
-      <div className='overflow-hidden'>
+      <div className="overflow-hidden">
         <img
-          className="rounded-lg scale-110 hover:scale-100 transition-all duration-300"
+          className="scale-110 rounded-lg transition-all duration-300 hover:scale-100"
           src={`https://image.tmdb.org/t/p/w500/${poster}`}
         />
       </div>
