@@ -41,7 +41,7 @@ export const MovieDetailPage = () => {
       <div className="relative overflow-hidden pb-6 pt-24 text-white">
         <div className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2">
           <img
-            className="object-contain brightness-[.2]"
+            className="object-contain brightness-[.2] w-full"
             src={`https://image.tmdb.org/t/p/original/${movie.belongs_to_collection?.backdrop_path || movie.backdrop_path}`}
           />
         </div>
