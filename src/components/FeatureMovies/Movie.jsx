@@ -27,7 +27,7 @@ export const Movie = ({ data }) => {
             </p>
           </div>
           <div className="mt-4">
-            <button className="max-w-fit cursor-pointer rounded-md bg-white px-5 py-3 text-[12px] font-bold text-black md:text-base">
+            <button className="max-w-fit cursor-pointer rounded-md bg-primary px-5 py-3 text-[12px] font-bold text-second md:text-base">
               <FontAwesomeIcon icon={faPlay} className="mr-2" />
               Trailer
             </button>
