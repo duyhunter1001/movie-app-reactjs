@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { cn } from "../helpers/utils";
+import { cn } from '@helpers/utils';
 
 export const CircularProgressBar = ({
   percent = 12,

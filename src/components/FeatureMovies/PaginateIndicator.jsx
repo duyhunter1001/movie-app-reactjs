@@ -1,4 +1,4 @@
-import { cn } from "../../helpers/utils";
+import { cn } from '@helpers/utils';
 
 export const PaginateIndicator = ({
   data,

@@ -1,16 +1,20 @@
 import { Link } from "react-router-dom";
 
+const MediaType = ({ type }) => {
+  return type === "tv" ? (
+    <div className="absolute right-0 top-3 z-10 rounded-s bg-primary px-2 text-sm font-bold uppercase text-second shadow">
+      {type}
+    </div>
+  ) : (
+    ""
+  )
+}
+
 export const MovieCard = ({ poster, title, releaseDate, mediaType, id }) => {
   return (
     <Link to={`/movie/${id}`}>
-      <div className="relative cursor-pointer rounded-lg border border-slate-900 shadow-sm">
-        {mediaType === "tv" ? (
-          <div className="absolute right-0 top-3 z-10 rounded-s bg-primary px-2 text-sm font-bold uppercase text-second shadow">
-            {mediaType}
-          </div>
-        ) : (
-          ""
-        )}
+      <div className="relative cursor-pointer rounded-lg border border-slate-900 shadow-sm h-full">
+        <MediaType type={mediaType} />
         <div className="overflow-hidden">
           <img
             className="scale-110 rounded-lg transition-all duration-300 hover:scale-100"

@@ -1,10 +1,10 @@
-import { Movie } from "./Movie";
-import { PaginateIndicator } from "./PaginateIndicator";
+import { Movie } from '@components/FeatureMovies/Movie';
+import { PaginateIndicator } from '@components/FeatureMovies/PaginateIndicator';
 import useSWR from "swr";
-import { fetchWithToken } from "../../helpers/fetcher";
+import { fetchWithToken } from '@helpers/fetcher';
 import { useEffect, useState, useRef } from "react";
-import { cn } from "../../helpers/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import { cn } from '@helpers/utils';
 
 // 0b3c3e4fc511459cbb1525e209c60e12
 

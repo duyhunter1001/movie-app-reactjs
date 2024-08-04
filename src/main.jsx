@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "@/index.css"
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/HomePage.jsx";
-import { MovieDetailPage } from "./pages/MovieDetailPage.jsx";
-import { RootLayout } from "./pages/RootLayout.jsx";
+import HomePage from '@pages/HomePage';
+import { MovieDetailPage } from '@pages/MovieDetailPage';
+import { RootLayout } from '@pages/RootLayout';
 
 const router = createBrowserRouter([
   {

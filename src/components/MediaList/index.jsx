@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MovieCard } from "./MovieCard";
+import { MovieCard } from "../MovieCard";
 import useSWR from "swr";
 import { fetchWithToken } from "../../helpers/fetcher";
 import { cn } from "../../helpers/utils";
@@ -45,7 +45,7 @@ export const MediaList = ({ title, tabs }) => {
           ))}
         </ul>
       </div>
-      <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 lg:grid-cols-6">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 lg:grid-cols-6 h-max">
         {mediaList.map((media) => (
           <MovieCard
             key={media.id}
