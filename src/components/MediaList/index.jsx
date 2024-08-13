@@ -17,7 +17,7 @@ export const MediaList = ({ title, tabs }) => {
   }, []);
 
   const { error, isLoading } = useSWR(
-    [tabs.find((tab) => tab.type === activeTabName).url, activeTabName],
+    [tabs.find((tab) => tab.type === activeTabName).url],
     (endpoint) => fetchWithToken({ endpoint }),
     {
       revalidateOnFocus: false,
@@ -51,9 +51,9 @@ export const MediaList = ({ title, tabs }) => {
                 {activeTabName === tab.type && (
                   <motion.span
                     layoutId={`active-pill-${idRefLayoutPill.current}`}
-                    className="absolute inset-0  bg-primary"
+                    className="absolute inset-0 bg-primary"
                     style={{ borderRadius: 9999 }}
-                    // transition={{ duration: 5 }}
+                    transition={{ type: 'spring', duration: 0.6 }}
                   />
                 )}
                 <span className="relative z-10">{tab.name}</span>

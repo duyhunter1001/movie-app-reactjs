@@ -1,13 +1,16 @@
+import { ImageComponent } from '@components/ImageComponent';
 
-export const ActorInfo = ({ id, name, character, profilePath }) => {
+export const ActorInfo = ({ name, character, profilePath }) => {
   return (
     <div className="relative h-full rounded-lg border border-slate-300 shadow-sm">
       <div className="overflow-hidden">
-        <img
+        <ImageComponent
           className="rounded-t-lg"
           src={`https://image.tmdb.org/t/p/w276_and_h350_face${profilePath}`}
           alt={name}
-          onError={(e) => e.target.src = "/assets/actor_no_image.svg"}
+          srcError={"/assets/actor_no_image.svg"}
+          width={276}
+          height={350}
         />
       </div>
       <div className="p-3">

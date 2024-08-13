@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { ImageComponent } from '@components/ImageComponent';
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -7,9 +8,11 @@ export const Movie = ({ data }) => {
 
   return (
     <>
-      <img
+      <ImageComponent
         className="absolute z-[0] size-full object-cover brightness-50"
         src={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
+        width={1400}
+        height={600}
       />
       <div className="w-full h-full px-8 pb-5 pt-16 text-white">
         <div className="absolute bottom-[1.25rem]">

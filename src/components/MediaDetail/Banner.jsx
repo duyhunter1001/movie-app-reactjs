@@ -2,6 +2,7 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { groupBy } from "lodash";
 import { CircularProgressBar } from '@components/CircularProgressBar';
+import { ImageComponent } from '@components/ImageComponent';
 
 export const Banner = ({ mediaInfo }) => {
   const filterCrews = (mediaInfo?.credits?.crew || [])
@@ -12,17 +13,21 @@ export const Banner = ({ mediaInfo }) => {
   return mediaInfo && (
     <div className="relative overflow-hidden pb-6 pt-24 text-white">
       <div className="absolute top-0">
-        <img
+        <ImageComponent
           className="w-full object-contain brightness-[.2]"
           src={`https://image.tmdb.org/t/p/original/${mediaInfo.belongs_to_collection?.backdrop_path || mediaInfo.backdrop_path}`}
+          width={1400}
+          height={800}
         />
       </div>
       <div className="relative flex gap-6 px-8">
         <div className="flex-1">
-          <img
+          <ImageComponent
             className="object-contain"
-            src={`https://image.tmdb.org/t/p/w500/${mediaInfo.belongs_to_collection?.poster_path || mediaInfo.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${mediaInfo.belongs_to_collection?.poster_path || mediaInfo.poster_path}`}
             alt={mediaInfo.belongs_to_collection?.name || mediaInfo.title}
+            width={600}
+            height={900}
           />
         </div>
         <div className="flex-[2]">
