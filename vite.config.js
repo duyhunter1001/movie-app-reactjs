@@ -12,7 +12,8 @@ export default defineConfig({
       '@components': path.resolve(__dirname, 'src/components'),
       '@libs': path.resolve(__dirname, 'src/libs'),
       '@pages': path.resolve(__dirname, 'src/pages'),
-      '@helpers': path.resolve(__dirname, 'src/helpers')
+      '@helpers': path.resolve(__dirname, 'src/helpers'),
+      '@configs': path.resolve(__dirname, 'src/configs'),
     }
   }
 })

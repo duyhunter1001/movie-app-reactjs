@@ -6,6 +6,7 @@
             "@libs/*": ["src/libs/*"],
             "@pages/*": ["src/pages/*"],
             "@helpers/*": ["src/helpers/*"],
+            "@configs/*": ["src/configs/*"],
         }
     }
 }

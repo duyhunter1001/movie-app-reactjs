@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { fetchWithToken } from '@helpers/fetcher';
 import { useEffect, useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { cn } from '@helpers/utils';
+import { cn } from '@libs/utils';
 
 // 0b3c3e4fc511459cbb1525e209c60e12
 
@@ -32,8 +32,8 @@ export const FeatureMovies = () => {
   }, [activeMovieId, movies]);
 
   const { error, isLoading } = useSWR(
-    "https://api.themoviedb.org/3/movie/popular",
-    fetchWithToken,
+    "/movie/popular",
+    (endpoint) => fetchWithToken({ endpoint }),
     {
       revalidateOnFocus: false,
       onSuccess: (data) => {

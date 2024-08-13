@@ -6,6 +6,7 @@ import { Loading } from "@components/Loading";
 import { Banner } from "@components/MediaDetail/Banner";
 import { ActorList } from "@components/MediaDetail/ActorList";
 import { RelatedMediaList } from "@components/MediaDetail/RelatedMediaList";
+import { MovieInformation } from '@components/MediaDetail/MovieInformation';
 
 export const MovieDetailPage = () => {
   const { id } = useParams();
@@ -13,8 +14,8 @@ export const MovieDetailPage = () => {
   const [relatedMovies, setRelatedMovies] = useState([]);
 
   const { error, isLoading } = useSWR(
-    `https://api.themoviedb.org/3/movie/${id}?append_to_response=release_dates,credits`,
-    fetchWithToken,
+    `/movie/${id}?append_to_response=release_dates,credits`,
+    (endpoint) => fetchWithToken({ endpoint }),
     {
       revalidateOnFocus: false,
       onSuccess: (data) => {
@@ -24,8 +25,8 @@ export const MovieDetailPage = () => {
   );
 
   const { isLoading: isRelatedMoviesLoading } = useSWR(
-    `https://api.themoviedb.org/3/movie/${id}/recommendations`,
-    fetchWithToken,
+    `/movie/${id}/recommendations`,
+    (endpoint) => fetchWithToken({ endpoint }),
     {
       revalidateOnFocus: false,
       onSuccess: (data) => {
@@ -48,7 +49,7 @@ export const MovieDetailPage = () => {
     <>
       <Banner mediaInfo={movie} />
       <div className="bg-black">
-        <div className="mx-auto flex max-w-screen-2xl p-8">
+        <div className="mx-auto flex max-w-screen-2xl p-8 gap-8">
           <div className="flex-[2]">
             <ActorList actors={movie?.credits?.cast || []} />
             {isRelatedMoviesLoading ? (
@@ -58,7 +59,7 @@ export const MovieDetailPage = () => {
             )}
           </div>
           <div className="flex-1 text-white">
-            <p className="lg:text-xl">Information</p>
+            <MovieInformation mediaInfo={movie} />
           </div>
         </div>
       </div>
