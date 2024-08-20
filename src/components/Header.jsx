@@ -9,8 +9,8 @@ export const Header = () => {
         <div className="flex">
           <Link to="/">
             <img
-              className="mr-8 w-20 cursor-pointer object-contain"
-              src="/assets/netflix.png"
+              className="mr-8 w-28 h-16 cursor-pointer object-contain"
+              src="/assets/logo-film.png"
               alt="logo"
             />
           </Link>
