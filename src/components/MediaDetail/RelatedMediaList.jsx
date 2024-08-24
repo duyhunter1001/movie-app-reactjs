@@ -1,5 +1,4 @@
 import { MovieCard } from "@components/MovieCard";
-import React from "react";
 
 export const RelatedMediaList = ({ mediaList }) => {
   return (
@@ -11,8 +10,9 @@ export const RelatedMediaList = ({ mediaList }) => {
             key={media.id}
             poster={media.poster_path}
             id={media.id}
-            title={media.title}
-            releaseDate={media.release_date}
+            title={media.title || media.name}
+            releaseDate={media.release_date || media.first_air_date}
+            mediaType={media.media_type}
           />
         ))}
       </div>

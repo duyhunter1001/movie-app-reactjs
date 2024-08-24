@@ -13,8 +13,8 @@ const MediaType = ({ type }) => {
 
 export const MovieCard = ({ poster, title, releaseDate, mediaType, id }) => {
   return (
-    <Link to={`/movie/${id}`}>
-      <div className="relative h-full cursor-pointer rounded-lg border border-slate-900 shadow-sm">
+    <Link to={mediaType === "tv" ? `/tv-show/${id}` : `/movie/${id}`}>
+      <div className="relative h-full cursor-pointer rounded-lg border border-slate-900 shadow-sm flex flex-col">
         <MediaType type={mediaType} />
         <div className="overflow-hidden rounded-t-lg">
           {/* <img
@@ -30,9 +30,9 @@ export const MovieCard = ({ poster, title, releaseDate, mediaType, id }) => {
             src={`https://image.tmdb.org/t/p/w500/${poster}`}
           />
         </div>
-        <div className="px-4 py-2">
+        <div className="px-4 py-2 h-1/6 flex-auto">
           <p className="line-clamp-2 font-bold">{title}</p>
-          <p className="text-sm">{releaseDate}</p>
+          <p className="text-sm">{releaseDate || ""}</p>
         </div>
       </div>
     </Link>

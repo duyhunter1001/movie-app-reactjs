@@ -1,6 +1,6 @@
 import { ImageComponent } from '@components/ImageComponent';
 
-export const ActorInfo = ({ name, character, profilePath }) => {
+export const ActorInfo = ({ name, character, profilePath, episodeCount }) => {
   return (
     <div className="relative h-full rounded-lg border border-slate-300 shadow-sm">
       <div className="overflow-hidden">
@@ -16,7 +16,7 @@ export const ActorInfo = ({ name, character, profilePath }) => {
       <div className="p-3">
         <p className="font-bold">{name}</p>
         <p>{character}</p>
-        <p>18 Chap</p>
+        {episodeCount && <p>{episodeCount} Episodes</p>}  
       </div>
     </div>
   );

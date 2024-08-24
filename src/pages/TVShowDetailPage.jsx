@@ -6,26 +6,26 @@ import { Loading } from "@components/Loading";
 import { Banner } from "@components/MediaDetail/Banner";
 import { ActorList } from "@components/MediaDetail/ActorList";
 import { RelatedMediaList } from "@components/MediaDetail/RelatedMediaList";
-import { MovieInformation } from "@components/MediaDetail/MovieInformation";
+import { TVShowInformation } from '@components/MediaDetail/TVShowInformation';
 
-export const MovieDetailPage = () => {
+export const TVShowDetailPage = () => {
   const { id } = useParams();
-  const [movie, setMovie] = useState(null);
+  const [tvShow, setTVShow] = useState(null);
   const [relatedMovies, setRelatedMovies] = useState([]);
 
   const { error, isLoading } = useSWR(
-    `/movie/${id}?append_to_response=release_dates,credits`,
+    `/tv/${id}?append_to_response=release_dates,credits,content_ratings,aggregate_credits`,
     (endpoint) => fetchWithToken({ endpoint }),
     {
       revalidateOnFocus: false,
       onSuccess: (data) => {
-        setMovie(data);
+        setTVShow(data);
       },
     },
   );
 
   const { isLoading: isRelatedMoviesLoading } = useSWR(
-    `/movie/${id}/recommendations`,
+    `/tv/${id}/recommendations`,
     (endpoint) => fetchWithToken({ endpoint }),
     {
       revalidateOnFocus: false,
@@ -45,30 +45,39 @@ export const MovieDetailPage = () => {
       </div>
     );
   }
-  const crews = (movie?.credits?.crew || [])
-    .filter((crew) => ["Director", "Screenplay", "Writer"].includes(crew.job))
-    .map((crew) => ({ id: crew.id, job: crew.job, name: crew.name }));
+  const crews = (tvShow?.aggregate_credits?.crew || [])
+    .filter((crew) => {
+      const jobs = (crew.jobs || []).map((j) => j.job);
+      return ["Director", "Writer"].some((job) => jobs.find((j) => j === job));
+    })
+    .map((crew) => ({ id: crew.id, job: crew.jobs[0].job, name: crew.name }));
 
-  return (
+  return tvShow && (
     <>
       <Banner
-        title={movie.title}
+        title={tvShow.name}
         backdropPath={
-          movie.belongs_to_collection?.backdrop_path || movie.backdrop_path
+          tvShow.belongs_to_collection?.backdrop_path || tvShow.backdrop_path
         }
         posterPath={
-          movie.belongs_to_collection?.poster_path || movie.poster_path
+          tvShow.belongs_to_collection?.poster_path || tvShow.poster_path
         }
         crews={crews}
-        releaseDate={movie.release_date}
-        genres={movie.genres || []}
-        voteAverage={movie.vote_average}
-        overview={movie.overview}
+        releaseDate={tvShow.first_air_date}
+        genres={tvShow.genres || []}
+        voteAverage={tvShow.vote_average}
+        overview={tvShow.overview}
       />
       <div className="bg-black">
         <div className="mx-auto flex max-w-screen-2xl gap-8 p-8">
           <div className="flex-[2]">
-            <ActorList actors={movie?.credits?.cast || []} />
+            <ActorList
+              actors={(tvShow?.aggregate_credits?.cast || []).map((cast) => ({
+                ...cast,
+                character: cast.roles[0]?.character,
+                episodeCount: cast.roles[0]?.episode_count,
+              }))}
+            />
             {isRelatedMoviesLoading ? (
               <Loading />
             ) : (
@@ -76,7 +85,7 @@ export const MovieDetailPage = () => {
             )}
           </div>
           <div className="flex-1 text-white">
-            <MovieInformation mediaInfo={movie} />
+            <TVShowInformation tvInfo={tvShow} />
           </div>
         </div>
       </div>
