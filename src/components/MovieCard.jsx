@@ -26,7 +26,7 @@ export const MovieCard = ({ poster, title, releaseDate, mediaType, id }) => {
           <ImageComponent
             className="scale-110 rounded-t-lg transition-all duration-300 hover:scale-100"
             width={230}
-            height={300}
+            height={330}
             src={`https://image.tmdb.org/t/p/w500/${poster}`}
           />
         </div>

@@ -4,6 +4,7 @@ import { cn } from '@libs/utils';
 export const CircularProgressBar = ({
   percent = 12,
   className = "",
+  sizeCustom = 0
 }) => {
   const [size, setSize] = useState(35);
   const [strokeWidth, setStrokeWidth] = useState(2);
@@ -11,23 +12,23 @@ export const CircularProgressBar = ({
 
   useEffect(() => {
     if (window.innerWidth >= 768) {
-      setSize(45);
+      setSize(sizeCustom !== 0 ? sizeCustom : 45);
       setStrokeWidth(4);
     }
 
     const handleResize = () => {
       if (window.innerWidth >= 768) {
-        setSize(45);
+        setSize(sizeCustom !== 0 ? sizeCustom : 45);
         setStrokeWidth(4);
       } else {
-        setSize(35);
+        setSize(sizeCustom !== 0 ? sizeCustom : 35);
         setStrokeWidth(2);
       }
       return true;
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [sizeCustom]);
 
   const radius = size / 2 - strokeWidth;
   return (

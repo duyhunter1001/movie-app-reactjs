@@ -6,7 +6,8 @@ import { Loading } from "@components/Loading";
 import { Banner } from "@components/MediaDetail/Banner";
 import { ActorList } from "@components/MediaDetail/ActorList";
 import { RelatedMediaList } from "@components/MediaDetail/RelatedMediaList";
-import { TVShowInformation } from '@components/MediaDetail/TVShowInformation';
+import { TVShowInformation } from "@components/MediaDetail/TVShowInformation";
+import { SessionList } from "@components/MediaDetail/SessionList";
 
 export const TVShowDetailPage = () => {
   const { id } = useParams();
@@ -52,43 +53,52 @@ export const TVShowDetailPage = () => {
     })
     .map((crew) => ({ id: crew.id, job: crew.jobs[0].job, name: crew.name }));
 
-  return tvShow && (
-    <>
-      <Banner
-        title={tvShow.name}
-        backdropPath={
-          tvShow.belongs_to_collection?.backdrop_path || tvShow.backdrop_path
-        }
-        posterPath={
-          tvShow.belongs_to_collection?.poster_path || tvShow.poster_path
-        }
-        crews={crews}
-        releaseDate={tvShow.first_air_date}
-        genres={tvShow.genres || []}
-        voteAverage={tvShow.vote_average}
-        overview={tvShow.overview}
-      />
-      <div className="bg-black">
-        <div className="mx-auto flex max-w-screen-2xl gap-8 p-8">
-          <div className="flex-[2]">
-            <ActorList
-              actors={(tvShow?.aggregate_credits?.cast || []).map((cast) => ({
-                ...cast,
-                character: cast.roles[0]?.character,
-                episodeCount: cast.roles[0]?.episode_count,
-              }))}
-            />
-            {isRelatedMoviesLoading ? (
-              <Loading />
-            ) : (
-              <RelatedMediaList mediaList={relatedMovies} />
-            )}
-          </div>
-          <div className="flex-1 text-white">
-            <TVShowInformation tvInfo={tvShow} />
+  return (
+    tvShow && (
+      <>
+        <Banner
+          title={tvShow.name}
+          backdropPath={
+            tvShow.belongs_to_collection?.backdrop_path || tvShow.backdrop_path
+          }
+          posterPath={
+            tvShow.belongs_to_collection?.poster_path || tvShow.poster_path
+          }
+          crews={crews}
+          releaseDate={tvShow.first_air_date}
+          genres={tvShow.genres || []}
+          voteAverage={tvShow.vote_average}
+          overview={tvShow.overview}
+        />
+        <div className="bg-black">
+          <div className="mx-auto flex max-w-screen-2xl gap-8 p-8">
+            <div className="flex-[2]">
+              <ActorList
+                actors={(tvShow?.aggregate_credits?.cast || []).map((cast) => ({
+                  ...cast,
+                  character: cast.roles[0]?.character,
+                  episodeCount: cast.roles[0]?.episode_count,
+                }))}
+              />
+              <SessionList
+                sessions={tvShow.seasons || []}
+                title={tvShow.seasons.name}
+                poster={tvShow.seasons.poster_path}
+                overview={tvShow.seasons.overview}
+                voteAverage={tvShow.seasons.vote_average}
+              />
+              {isRelatedMoviesLoading ? (
+                <Loading />
+              ) : (
+                <RelatedMediaList mediaList={relatedMovies} />
+              )}
+            </div>
+            <div className="flex-1 text-white">
+              <TVShowInformation tvInfo={tvShow} />
+            </div>
           </div>
         </div>
-      </div>
-    </>
+      </>
+    )
   );
 };

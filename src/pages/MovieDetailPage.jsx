@@ -49,7 +49,7 @@ export const MovieDetailPage = () => {
     .filter((crew) => ["Director", "Screenplay", "Writer"].includes(crew.job))
     .map((crew) => ({ id: crew.id, job: crew.job, name: crew.name }));
 
-  return (
+  return movie && (
     <>
       <Banner
         title={movie.title}

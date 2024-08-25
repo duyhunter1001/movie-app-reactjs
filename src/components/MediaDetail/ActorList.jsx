@@ -21,7 +21,7 @@ export const ActorList = ({ actors = [] }) => {
           />
         ))}
       </div>
-      <p className="mt-2 cursor-pointer italic" onClick={() => setIsShowMore(!isShowMore)}>
+      <p className="mt-4 cursor-pointer italic" onClick={() => setIsShowMore(!isShowMore)}>
         {isShowMore ? "Show less" : "Show more"}
       </p>
     </div>
