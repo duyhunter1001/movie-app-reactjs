@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { groupBy } from "lodash";
 import { CircularProgressBar } from "@components/CircularProgressBar";
 import { ImageComponent } from "@components/ImageComponent";
+import { useModalContext } from "@contexts/ModalProvider";
 
 export const Banner = ({
   title,
@@ -13,8 +14,21 @@ export const Banner = ({
   genres,
   voteAverage,
   overview,
+  trailerVideoKey,
 }) => {
+  const { setIsShowModal, setModalContent } = useModalContext();
   const groupedCrews = groupBy(crews, "job");
+
+  const onShowPreviewMovie = () => {
+    setIsShowModal(true);
+    setModalContent(
+      <iframe
+        className="aspect-video w-[50vw]"
+        src={`https://www.youtube.com/embed/${trailerVideoKey}`}
+        title="YouTube video player"
+      ></iframe>,
+    );
+  };
 
   return (
     <div className="relative overflow-hidden pb-6 pt-24 text-white">
@@ -46,7 +60,10 @@ export const Banner = ({
             <p>{genres.map((genre) => genre.name).join(", ")}</p>
           </div>
           <div className="mb-4 flex gap-10">
-            <button className="rounded-md border-none bg-transparent px-5 py-3 transition-all duration-300 hover:bg-primary hover:text-second">
+            <button
+              className="rounded-md border-none bg-transparent px-5 py-3 transition-all duration-300 hover:bg-primary hover:text-second"
+              onClick={onShowPreviewMovie}
+            >
               <FontAwesomeIcon icon={faPlay} className="mr-2" />
               Trailer
             </button>
@@ -68,9 +85,9 @@ export const Banner = ({
                 <div key={job}>
                   <p className="font-bold">{job}</p>
                   <p>
-                    {(groupedCrews[job].map((crew) => crew.name) || []).slice(0, 5).join(
-                      ", ",
-                    )}
+                    {(groupedCrews[job].map((crew) => crew.name) || [])
+                      .slice(0, 5)
+                      .join(", ")}
                   </p>
                 </div>
               ))}

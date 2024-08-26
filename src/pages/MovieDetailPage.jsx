@@ -14,7 +14,7 @@ export const MovieDetailPage = () => {
   const [relatedMovies, setRelatedMovies] = useState([]);
 
   const { error, isLoading } = useSWR(
-    `/movie/${id}?append_to_response=release_dates,credits`,
+    `/movie/${id}?append_to_response=release_dates,credits,videos`,
     (endpoint) => fetchWithToken({ endpoint }),
     {
       revalidateOnFocus: false,
@@ -64,6 +64,7 @@ export const MovieDetailPage = () => {
         genres={movie.genres || []}
         voteAverage={movie.vote_average}
         overview={movie.overview}
+        trailerVideoKey={(movie.videos?.results || []).find(video => video.type === "Trailer")?.key}
       />
       <div className="bg-black">
         <div className="mx-auto flex max-w-screen-2xl gap-8 p-8">
