@@ -67,7 +67,7 @@ export const MovieDetailPage = () => {
         trailerVideoKey={(movie.videos?.results || []).find(video => video.type === "Trailer")?.key}
       />
       <div className="bg-black">
-        <div className="mx-auto flex max-w-screen-2xl gap-8 p-8">
+        <div className="mx-auto flex max-w-screen-2xl gap-8 p-8 max-md:flex-col-reverse">
           <div className="flex-[2]">
             <ActorList actors={movie?.credits?.cast || []} />
             {isRelatedMoviesLoading ? (

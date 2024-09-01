@@ -16,12 +16,11 @@ export const Banner = ({
   overview,
   trailerVideoKey,
 }) => {
-  const { setIsShowModal, setModalContent } = useModalContext();
+  const { openPopup } = useModalContext();
   const groupedCrews = groupBy(crews, "job");
 
   const onShowPreviewMovie = () => {
-    setIsShowModal(true);
-    setModalContent(
+    openPopup(
       <iframe
         className="size-full"
         src={`https://www.youtube.com/embed/${trailerVideoKey}`}

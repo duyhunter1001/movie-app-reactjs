@@ -8,7 +8,7 @@ import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export const Movie = ({ data }) => {
-  const { setIsShowModal, setModalContent } = useModalContext();
+  const { openPopup } = useModalContext();
   const [isLoadingTrailer, setIsLoadingTrailer] = useState(false);
   const [trailerVideoKey, setTrailerVideoKey] = useState("");
 
@@ -34,8 +34,7 @@ export const Movie = ({ data }) => {
   }, [trailerVideoKey]);
 
   const triggerOpenModal = () => {
-    setIsShowModal(true);
-    setModalContent(
+    openPopup(
       <iframe
       className='size-full'
         src={`https://www.youtube.com/embed/${trailerVideoKey}`}
