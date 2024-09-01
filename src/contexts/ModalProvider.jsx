@@ -28,7 +28,9 @@ export const ModalProvider = ({ children }) => {
             className="absolute inset-0 flex items-center justify-center bg-slate-600/60"
             onClick={() => setIsShowModal(false)}
           >
-            {modalContent}
+            <div className="h-[40vw] w-[80vw]">
+              {modalContent}
+            </div>
           </div>
         </div>
       )}

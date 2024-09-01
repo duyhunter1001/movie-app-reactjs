@@ -37,7 +37,7 @@ export const Movie = ({ data }) => {
     setIsShowModal(true);
     setModalContent(
       <iframe
-        className="aspect-video w-[50vw]"
+      className='size-full'
         src={`https://www.youtube.com/embed/${trailerVideoKey}`}
         title="YouTube video player"
       ></iframe>,

@@ -23,7 +23,7 @@ export const Banner = ({
     setIsShowModal(true);
     setModalContent(
       <iframe
-        className="aspect-video w-[50vw]"
+        className="size-full"
         src={`https://www.youtube.com/embed/${trailerVideoKey}`}
         title="YouTube video player"
       ></iframe>,
@@ -31,17 +31,17 @@ export const Banner = ({
   };
 
   return (
-    <div className="relative text-white h-svh">
+    <div className="relative h-svh text-white">
       <div className="absolute inset-0">
         <ImageComponent
-          className="w-full object-cover brightness-[.2] h-full"
+          className="h-full w-full object-cover brightness-[.2]"
           src={`https://image.tmdb.org/t/p/original/${backdropPath}`}
         />
       </div>
-      <div className="absolute inset-0 flex gap-6 px-8 pt-24 pb-6 z-10">
+      <div className="absolute inset-0 z-10 flex gap-6 px-8 pb-6 pt-24">
         <div className="hidden sm:block sm:flex-1">
           <ImageComponent
-            className="object-cover h-full"
+            className="h-full object-cover"
             src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${posterPath}`}
             alt={title}
             width={600}
