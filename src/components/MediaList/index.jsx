@@ -5,7 +5,7 @@ import { fetchWithToken } from "@helpers/fetcher";
 import { cn } from "@libs/utils";
 import { Loading } from "@components/Loading";
 import { motion } from "framer-motion";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 export const MediaList = ({ title, tabs }) => {
   const [mediaList, setMediaList] = useState([]);
@@ -34,7 +34,7 @@ export const MediaList = ({ title, tabs }) => {
   return (
     <div className="px-8 py-8 text-white">
       <div className="mb-6 flex items-center gap-4">
-        <p className="text-xl font-bold">{title}</p>
+        <p className="md:text-xl font-bold">{title}</p>
         <div className="flex gap-2">
           {tabs.map((tab, index) => {
             return (
@@ -53,7 +53,7 @@ export const MediaList = ({ title, tabs }) => {
                     layoutId={`active-pill-${idRefLayoutPill.current}`}
                     className="absolute inset-0 bg-primary"
                     style={{ borderRadius: 9999 }}
-                    transition={{ type: 'spring', duration: 0.6 }}
+                    transition={{ type: "spring", duration: 0.6 }}
                   />
                 )}
                 <span className="relative z-10">{tab.name}</span>
@@ -62,11 +62,13 @@ export const MediaList = ({ title, tabs }) => {
           })}
         </div>
       </div>
-      <div className="grid h-max grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 lg:grid-cols-6">
-        {isLoading ? (
+      {isLoading ? (
+        <div className="flex justify-center">
           <Loading />
-        ) : (
-          mediaList.map((media) => (
+        </div>
+      ) : (
+        <div className="grid h-max grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 lg:grid-cols-6">
+          {mediaList.map((media) => (
             <MovieCard
               key={media.id}
               poster={media.poster_path}
@@ -75,9 +77,9 @@ export const MediaList = ({ title, tabs }) => {
               mediaType={media.media_type || activeTabName}
               id={media.id}
             />
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

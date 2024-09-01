@@ -9,17 +9,16 @@ export const Movie = ({ data }) => {
   return (
     <>
       <ImageComponent
-        className="absolute z-[0] size-full object-cover brightness-50"
+        className="absolute z-[0] size-full object-cover brightness-50 max-md:bg-center"
         src={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
         width={1400}
-        height={600}
       />
       <div className="w-full h-full px-8 pb-5 pt-16 text-white">
         <div className="absolute bottom-[1.25rem]">
           <p className="mt-4 font-bold lg:text-2xl">{data.title}</p>
-          <p className="my-4 max-w-fit border px-2 py-4 text-sm font-light uppercase md:text-base">
+          {/* <p className="my-4 max-w-fit border px-2 py-4 text-sm font-light uppercase md:text-base">
             PG13
-          </p>
+          </p> */}
           <p className="text-[12px] sm:text-sm">Release: {data.release_date}</p>
           <div className="hidden sm:block">
             <div className="my-4 mt-8 max-w-fit font-bold lg:text-lg">

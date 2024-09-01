@@ -31,7 +31,7 @@ export const FeatureMovies = () => {
     };
   }, [activeMovieId, movies]);
 
-  const { error, isLoading } = useSWR(
+  const { error } = useSWR(
     "/movie/popular",
     (endpoint) => fetchWithToken({ endpoint }),
     {
@@ -46,14 +46,13 @@ export const FeatureMovies = () => {
     },
   );
   if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
 
   const onHandleSetMovieActive = (id) => {
     setActiveMovieId(id);
   };
 
   return (
-    <div className="relative min-h-[600px]">
+    <div className="relative max-md:min-h-[50vh] md:min-h-svh">
       {movies.map((movie) => (
         <AnimatePresence key={movie.id}>
           <motion.div

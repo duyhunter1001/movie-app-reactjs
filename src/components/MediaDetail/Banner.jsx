@@ -31,23 +31,20 @@ export const Banner = ({
   };
 
   return (
-    <div className="relative overflow-hidden pb-6 pt-24 text-white">
-      <div className="absolute top-0">
+    <div className="relative text-white h-svh">
+      <div className="absolute inset-0">
         <ImageComponent
-          className="w-full object-contain brightness-[.2]"
+          className="w-full object-cover brightness-[.2] h-full"
           src={`https://image.tmdb.org/t/p/original/${backdropPath}`}
-          width={1400}
-          height={800}
         />
       </div>
-      <div className="relative flex gap-6 px-8">
-        <div className="flex-1">
+      <div className="absolute inset-0 flex gap-6 px-8 pt-24 pb-6 z-10">
+        <div className="hidden sm:block sm:flex-1">
           <ImageComponent
-            className="object-contain"
+            className="object-cover h-full"
             src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${posterPath}`}
             alt={title}
             width={600}
-            height={900}
           />
         </div>
         <div className="flex-[2]">
