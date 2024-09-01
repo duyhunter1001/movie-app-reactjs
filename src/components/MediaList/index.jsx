@@ -56,7 +56,7 @@ export const MediaList = ({ title, tabs }) => {
                     transition={{ type: "spring", duration: 0.6 }}
                   />
                 )}
-                <span className="relative z-10">{tab.name}</span>
+                <span className="relative z-10 max-sm:text-sm">{tab.name}</span>
               </button>
             );
           })}
