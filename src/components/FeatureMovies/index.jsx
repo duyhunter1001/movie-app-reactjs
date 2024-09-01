@@ -32,7 +32,7 @@ export const FeatureMovies = () => {
   }, [activeMovieId, movies]);
 
   const { error } = useSWR(
-    "/movie/popular",
+    "/discover/movie?include_adult=false&language=en-US&page=1&sort_by=popularity.desc&include_video=true",
     (endpoint) => fetchWithToken({ endpoint }),
     {
       revalidateOnFocus: false,
