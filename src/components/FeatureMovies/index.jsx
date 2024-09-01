@@ -38,7 +38,7 @@ export const FeatureMovies = () => {
       revalidateOnFocus: false,
       onSuccess: (data) => {
         if (data?.results.length) {
-          const popularData = data.results.slice(0, 4);
+          const popularData = data.results.reverse().slice(0, 4);
           setMovies(() => popularData);
           setActiveMovieId(popularData[0].id);
         }
