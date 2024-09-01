@@ -7,9 +7,9 @@ import { Loading } from "@components/Loading";
 import { motion } from "framer-motion";
 import { v4 as uuidv4 } from "uuid";
 
-export const MediaList = ({ title, tabs }) => {
+export const MediaList = ({ title, tabs, category }) => {
   const [mediaList, setMediaList] = useState([]);
-  const [activeTabName, setActiveTabName] = useState(tabs[0]?.type);
+  const [activeTabName, setActiveTabName] = useState(localStorage.getItem(category) ?? tabs[0]?.type);
   const idRefLayoutPill = useRef();
 
   useEffect(() => {
@@ -46,6 +46,7 @@ export const MediaList = ({ title, tabs }) => {
                 )}
                 onClick={() => {
                   setActiveTabName(tab.type);
+                  localStorage.setItem(category, tab.type)
                 }}
               >
                 {activeTabName === tab.type && (
