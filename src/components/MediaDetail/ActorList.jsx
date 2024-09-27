@@ -8,7 +8,7 @@ export const ActorList = ({ actors = [] }) => {
 
   return (
     <div className="text-white">
-      <p className="mb-4 lg:text-lg font-bold">Actors</p>
+      <p className="mb-4 text-lg font-bold">Actors</p>
       <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
         {curActors.map((actor) => (
           <ActorInfo

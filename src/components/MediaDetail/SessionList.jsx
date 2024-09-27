@@ -9,7 +9,7 @@ export const SessionList = ({ sessions }) => {
 
   return (
     <div className="mt-8 text-white">
-      <p className="mb-4 font-bold lg:text-lg">Seasons</p>
+      <p className="mb-4 font-bold text-lg">Seasons</p>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {curSession.map((season) => (
           <div

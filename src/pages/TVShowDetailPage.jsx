@@ -72,7 +72,7 @@ export const TVShowDetailPage = () => {
           trailerVideoKey={(tvShow.videos?.results || []).find(video => video.type === "Trailer")?.key}
         />
         <div className="bg-black">
-          <div className="mx-auto flex max-w-screen-2xl gap-8 p-8">
+          <div className="mx-auto flex max-w-screen-2xl gap-8 p-8 max-md:flex-col-reverse">
             <div className="flex-[2]">
               <ActorList
                 actors={(tvShow?.aggregate_credits?.cast || []).map((cast) => ({
@@ -91,13 +91,13 @@ export const TVShowDetailPage = () => {
               {isRelatedMoviesLoading ? (
                 <Loading />
               ) : (
-                <RelatedMediaList mediaList={relatedMovies} />
+                <RelatedMediaList mediaList={relatedMovies} title="More like this" />
               )}
             </div>
             <div className="flex-1 text-white">
               <TVShowInformation tvInfo={tvShow} />
             </div>
-          </div>
+          </div> 
         </div>
       </>
     )

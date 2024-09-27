@@ -2,7 +2,7 @@ export const TVShowInformation = ({ tvInfo }) => {
   return (
     tvInfo && (
       <div>
-        <p className="mb-4 font-bold lg:text-xl">Information</p>
+        <p className="mb-4 font-bold text-xl">Information</p>
         <div className="mb-4">
           <p className="font-bold">Original Name</p>
           <p>{tvInfo.original_name}</p>

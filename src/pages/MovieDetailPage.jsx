@@ -73,7 +73,7 @@ export const MovieDetailPage = () => {
             {isRelatedMoviesLoading ? (
               <Loading />
             ) : (
-              <RelatedMediaList mediaList={relatedMovies} />
+              <RelatedMediaList mediaList={relatedMovies} title="More like this" /> 
             )}
           </div>
           <div className="flex-1 text-white">

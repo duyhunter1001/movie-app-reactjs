@@ -47,7 +47,7 @@ export const Banner = ({
           />
         </div>
         <div className="flex-[2]">
-          <p className="mb-2 text-lg font-bold lg:text-2xl">{title}</p>
+          <p className="mb-2 text-2xl font-bold lg:text-3xl">{title}</p>
           <div className="mb-2 flex items-center gap-4">
             <span className="border border-gray-400 px-2 py-1 text-gray-400">
               G
