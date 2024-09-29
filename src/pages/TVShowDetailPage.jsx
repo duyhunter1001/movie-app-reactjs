@@ -9,7 +9,7 @@ import { RelatedMediaList } from "@components/MediaDetail/RelatedMediaList";
 import { TVShowInformation } from "@components/MediaDetail/TVShowInformation";
 import { SessionList } from "@components/MediaDetail/SessionList";
 
-export const TVShowDetailPage = () => {
+export default function TVShowDetailPage() {
   const { id } = useParams();
   const [tvShow, setTVShow] = useState(null);
   const [relatedMovies, setRelatedMovies] = useState([]);
@@ -102,4 +102,4 @@ export const TVShowDetailPage = () => {
       </>
     )
   );
-};
+}

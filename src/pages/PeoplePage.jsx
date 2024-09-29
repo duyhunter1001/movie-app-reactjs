@@ -9,7 +9,7 @@ const GENDER_MAPPING = {
   3: "Non-binary",
 };
 
-export const PeoplePage = () => {
+export default function PeoplePage() {
   const peopleInfo = useLoaderData();
 
   return (
@@ -53,4 +53,4 @@ export const PeoplePage = () => {
       </div>
     </div>
   );
-};
+}

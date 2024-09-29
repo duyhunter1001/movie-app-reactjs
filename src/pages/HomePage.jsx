@@ -2,7 +2,7 @@ import { FeatureMovies } from '@components/FeatureMovies';
 import { MediaList } from '@components/MediaList';
 import { TRENDING_TABS, TOP_RATED_TABS } from '@libs/constants';
 
-function HomePage() {
+export default function HomePage() {
   return (
     <>
       <FeatureMovies />
@@ -11,5 +11,3 @@ function HomePage() {
     </>
   );
 }
-
-export default HomePage;

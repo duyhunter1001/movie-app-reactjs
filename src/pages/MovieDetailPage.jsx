@@ -8,7 +8,7 @@ import { ActorList } from "@components/MediaDetail/ActorList";
 import { RelatedMediaList } from "@components/MediaDetail/RelatedMediaList";
 import { MovieInformation } from "@components/MediaDetail/MovieInformation";
 
-export const MovieDetailPage = () => {
+export default function MovieDetailPage() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [relatedMovies, setRelatedMovies] = useState([]);
@@ -83,4 +83,4 @@ export const MovieDetailPage = () => {
       </div>
     </>
   );
-};
+}
