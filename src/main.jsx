@@ -2,18 +2,15 @@ import React, { lazy } from "react";
 import ReactDOM from "react-dom/client";
 import "@/index.css"
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import HomePage from '@pages/HomePage';
-// import { MovieDetailPage } from '@pages/MovieDetailPage';
 import { RootLayout } from '@pages/RootLayout';
-// import { TVShowDetailPage } from '@pages/TVShowDetailPage';
 import { ModalProvider } from '@contexts/ModalProvider';
-// import { PeoplePage } from '@pages/PeoplePage';
 import { fetchWithToken } from '@helpers/fetcher';
 
 const HomePage = lazy(() => import("@pages/HomePage"));
 const MovieDetailPage = lazy(() => import("@pages/MovieDetailPage"));
 const TVShowDetailPage = lazy(() => import("@pages/TVShowDetailPage"));
 const PeoplePage = lazy(() => import("@pages/PeoplePage"));
+const SearchPage = lazy(() => import("@pages/SearchPage"));
 
 const router = createBrowserRouter([
   {
@@ -40,7 +37,11 @@ const router = createBrowserRouter([
           });
           return res;
         }
-      }
+      },
+      {
+        path: "/search",
+        element: <SearchPage />,
+      },
     ],
   },
 ]);

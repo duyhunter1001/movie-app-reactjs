@@ -9,7 +9,7 @@ export const Header = () => {
         <div className="flex">
           <Link to="/">
             <img
-              className="mr-8 w-28 h-16 cursor-pointer object-contain"
+              className="mr-8 h-16 w-28 cursor-pointer object-contain"
               src="/assets/logo-film.png"
               alt="logo"
             />
@@ -21,10 +21,12 @@ export const Header = () => {
           </div>
         </div>
         <div>
-          <FontAwesomeIcon
-            icon={faMagnifyingGlass}
-            className="hidden sm:block"
-          />
+          <Link to="/search">
+            <FontAwesomeIcon
+              icon={faMagnifyingGlass}
+              className="hidden sm:block"
+            />
+          </Link>
           <FontAwesomeIcon icon={faBars} className="block sm:hidden" />
         </div>
       </div>
