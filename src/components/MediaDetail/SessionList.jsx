@@ -1,5 +1,6 @@
 import { CircularProgressBar } from "@components/CircularProgressBar";
 import { ImageComponent } from "@components/ImageComponent";
+import { cn } from '@libs/utils';
 import { useState } from 'react';
 
 export const SessionList = ({ sessions }) => {
@@ -40,7 +41,7 @@ export const SessionList = ({ sessions }) => {
           </div>
         ))}
         <p
-          className="cursor-pointer italic"
+          className={cn("cursor-pointer italic", sessions.length > 4 ? "block": "hidden")}
           onClick={() => setIsShowMore(!isShowMore)}
         >
           {isShowMore ? "Show less" : "Show more"}

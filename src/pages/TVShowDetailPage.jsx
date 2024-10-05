@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchWithToken } from "@helpers/fetcher";
 import useSWR from "swr";
@@ -13,6 +13,10 @@ export default function TVShowDetailPage() {
   const { id } = useParams();
   const [tvShow, setTVShow] = useState(null);
   const [relatedMovies, setRelatedMovies] = useState([]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const { error, isLoading } = useSWR(
     `/tv/${id}?append_to_response=release_dates,credits,content_ratings,aggregate_credits,videos`,

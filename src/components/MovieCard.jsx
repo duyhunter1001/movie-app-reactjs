@@ -17,14 +17,8 @@ export const MovieCard = ({ poster, title, releaseDate, mediaType, id }) => {
       <div className="relative h-full cursor-pointer rounded-lg border border-slate-900 shadow-sm flex flex-col">
         <MediaType type={mediaType} />
         <div className="overflow-hidden rounded-t-lg">
-          {/* <img
-            className="scale-110 rounded-t-lg transition-all duration-300 hover:scale-100"
-            src={`https://image.tmdb.org/t/p/w500/${poster}`}
-            width={230}
-            height={300}
-          /> */}
           <ImageComponent
-            className="w-full scale-110 rounded-t-lg transition-all duration-300 hover:scale-100"
+            className="w-full rounded-t-lg transition-all duration-300 hover:scale-110"
             width={230}
             height={330}
             src={`https://image.tmdb.org/t/p/w500/${poster}`}

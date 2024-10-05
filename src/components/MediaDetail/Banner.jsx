@@ -73,7 +73,7 @@ export const Banner = ({
           </div>
           <div className="mb-4">
             <p className="font-bold">Overview</p>
-            <p>{overview}</p>
+            <p className='max-sm:line-clamp-4'>{overview}</p>
           </div>
           <div className="flex flex-wrap gap-10">
             {groupedCrews &&

@@ -8,7 +8,7 @@ export const RootLayout = () => {
     <div className="bg-overview">
       <Header />
       <div className="relative mx-auto min-h-svh max-w-screen-2xl bg-black shadow-md">
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={<div className='absolute inset-0 flex items-center justify-center'><Loading /></div>}>
           <Outlet />
         </Suspense>
       </div>

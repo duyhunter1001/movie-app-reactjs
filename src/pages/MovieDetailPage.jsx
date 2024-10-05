@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchWithToken } from "@helpers/fetcher";
 import useSWR from "swr";
@@ -12,6 +12,10 @@ export default function MovieDetailPage() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [relatedMovies, setRelatedMovies] = useState([]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const { error, isLoading } = useSWR(
     `/movie/${id}?append_to_response=release_dates,credits,videos`,

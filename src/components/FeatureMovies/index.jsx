@@ -62,7 +62,7 @@ export const FeatureMovies = () => {
             transition={{ duration: 1 }}
             exit={{ opacity: 0 }}
           >
-            <Movie data={movie} />
+            <Movie data={movie} isActive={activeMovieId === movie.id} />
           </motion.div>
         </AnimatePresence>
       ))}

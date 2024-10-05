@@ -6,7 +6,7 @@ export const ActorInfo = ({ id, name, character, profilePath, episodeCount }) =>
     <Link to={`/people/${id}`} className="relative h-full rounded-lg border border-slate-300 shadow-sm">
       <div className="overflow-hidden">
         <ImageComponent
-          className="rounded-t-lg"
+          className="rounded-t-lg hover:scale-110"
           src={`https://image.tmdb.org/t/p/w276_and_h350_face${profilePath}`}
           alt={name}
           srcError={"/assets/actor_no_image.svg"}

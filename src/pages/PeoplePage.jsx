@@ -1,5 +1,6 @@
 import { ImageComponent } from "@components/ImageComponent";
 import { RelatedMediaList } from "@components/MediaDetail/RelatedMediaList";
+import { useEffect } from 'react';
 import { useLoaderData } from "react-router-dom";
 
 const GENDER_MAPPING = {
@@ -11,6 +12,10 @@ const GENDER_MAPPING = {
 
 export default function PeoplePage() {
   const peopleInfo = useLoaderData();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="w-full px-8 pt-24 text-white">

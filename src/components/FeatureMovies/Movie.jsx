@@ -4,10 +4,11 @@ import { useModalContext } from "@contexts/ModalProvider";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchWithToken } from "@helpers/fetcher";
+import { cn } from '@libs/utils';
 import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export const Movie = ({ data }) => {
+export const Movie = ({ data, isActive = false }) => {
   const { openPopup } = useModalContext();
   const [isLoadingTrailer, setIsLoadingTrailer] = useState(false);
   const [trailerVideoKey, setTrailerVideoKey] = useState("");
@@ -59,14 +60,14 @@ export const Movie = ({ data }) => {
         width={1400}
       />
       <div className="h-full w-full px-8 pb-5 pt-16 text-white">
-        <div className="absolute bottom-[1.25rem]">
-          <p className="mt-4 font-bold lg:text-2xl">{data.title}</p>
-          <p className="text-[12px] sm:text-sm">Release: {data.release_date}</p>
+        <div className={cn("absolute top-1/2 left-9 translate-y-[60px] opacity-0 blur-lg", isActive && "animate-show-text")} >
+          <p className={cn("mt-4 font-bold text-2xl max-sm:line-clamp-2 md:text-4xl lg:text-6xl")}>{data.title}</p>
+          <p className="text-sm">Release: {data.release_date}</p>
           <div className="hidden sm:block">
-            <div className="my-4 mt-8 max-w-fit font-bold lg:text-lg">
+            <div className="my-4 mt-8 max-w-fit font-bold md:text-2xl">
               Overview
             </div>
-            <p className="max-w-xl text-wrap text-justify text-[12px] md:text-sm">
+            <p className="max-w-xl text-wrap text-justify text-[12px] md:text-base lg:text-lg max-md:line-clamp-2 max-lg:line-clamp-4">
               {data.overview}
             </p>
           </div>
