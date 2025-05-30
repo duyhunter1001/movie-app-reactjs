@@ -1,6 +1,7 @@
 import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { PUBLIC_ROUTE } from "@configs/environment";
 
 export const Header = () => {
   return (
@@ -10,7 +11,7 @@ export const Header = () => {
           <Link to="/">
             <img
               className="mr-8 h-16 w-28 cursor-pointer object-contain"
-              src="/assets/logo-film.png"
+              src={`${PUBLIC_ROUTE}/assets/logo-film.png`}
               alt="logo"
             />
           </Link>

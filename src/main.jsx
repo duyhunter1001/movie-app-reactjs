@@ -1,10 +1,11 @@
 import React, { lazy } from "react";
 import ReactDOM from "react-dom/client";
-import "@/index.css"
+import "@/index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { RootLayout } from '@pages/RootLayout';
-import { ModalProvider } from '@contexts/ModalProvider';
-import { fetchWithToken } from '@helpers/fetcher';
+import { RootLayout } from "@pages/RootLayout";
+import { ModalProvider } from "@contexts/ModalProvider";
+import { fetchWithToken } from "@helpers/fetcher";
+import { PUBLIC_ROUTE } from "@configs/environment";
 
 const HomePage = lazy(() => import("@pages/HomePage"));
 const MovieDetailPage = lazy(() => import("@pages/MovieDetailPage"));
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        path: "/",
+        path: PUBLIC_ROUTE,
         element: <HomePage />,
       },
       {
@@ -36,13 +37,16 @@ const router = createBrowserRouter([
             endpoint: `/person/${params.id}?append_to_response=combined_credits`,
           });
           return res;
-        }
+        },
       },
       {
         path: "/search",
         element: <SearchPage />,
       },
     ],
+  },
+  {
+    basename: PUBLIC_ROUTE,
   },
 ]);
 
